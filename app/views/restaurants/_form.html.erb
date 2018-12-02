@@ -1,7 +1,7 @@
 <%= simple_form_for @restaurant do |f| %>
-    <%= f.input :name %>
-    <%= f.input :description %>
-    <%= f.input :contactInfo, label: "Contact Info" %>
-    <%= f.input :location %>
+    <%= f.input :name, input_html: { maxlength: 50 } %>
+    <%= f.input :description, input_html: { maxlength: 2000 } %>
+    <%= f.input :contactInfo, label: "Contact Info", input_html: { maxlength: 200 } %>
+    <%= f.input :location, input_html: { maxlength: 100 } %>
     <%= f.button :submit %>
 <% end %>

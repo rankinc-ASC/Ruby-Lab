@@ -10202,3 +10202,442 @@ Processing by RestaurantsController#index as HTML
 Completed 200 OK in 254ms (Views: 238.7ms | ActiveRecord: 7.0ms)
 
 
+Started GET "/restaurants/9" for 127.0.0.1 at 2018-12-01 23:37:52 -0500
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/ruby/.rvm/gems/ruby-2.5.3/gems/activerecord-5.2.1/lib/active_record/log_subscriber.rb:98
+Processing by RestaurantsController#show as HTML
+  Parameters: {"id"=>"9"}
+  [1m[36mRestaurant Load (0.4ms)[0m  [1m[34mSELECT  "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:58
+  [1m[36mReview Load (2.1ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."restaurant_id" = ?[0m  [["restaurant_id", 9]]
+  ↳ app/controllers/restaurants_controller.rb:15
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT AVG("reviews"."rating") FROM "reviews" WHERE "reviews"."restaurant_id" = ?[0m  [["restaurant_id", 9]]
+  ↳ app/controllers/restaurants_controller.rb:18
+  Rendering restaurants/show.html.erb within layouts/application
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "reviews" WHERE "reviews"."restaurant_id" = ?[0m  [["restaurant_id", 9]]
+  ↳ app/views/restaurants/show.html.erb:19
+  Rendered collection of reviews/_review.html.erb [2 times] (0.6ms)
+  Rendered restaurants/show.html.erb within layouts/application (14.7ms)
+Completed 200 OK in 644ms (Views: 568.0ms | ActiveRecord: 3.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-12-02 00:15:55 -0500
+Processing by RestaurantsController#index as HTML
+  Rendering restaurants/index.html.erb within layouts/application
+  [1m[36mRestaurant Load (0.4ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" ORDER BY created_at DESC[0m
+  ↳ app/views/restaurants/index.html.erb:1
+  [1m[36mReview Load (0.3ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."restaurant_id" = ?[0m  [["restaurant_id", 12]]
+  ↳ app/helpers/restaurants_helper.rb:3
+  [1m[36mReview Load (0.1ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."restaurant_id" = ?[0m  [["restaurant_id", 11]]
+  ↳ app/helpers/restaurants_helper.rb:3
+  [1m[36mReview Load (0.1ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."restaurant_id" = ?[0m  [["restaurant_id", 10]]
+  ↳ app/helpers/restaurants_helper.rb:3
+  [1m[36mReview Load (0.1ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."restaurant_id" = ?[0m  [["restaurant_id", 9]]
+  ↳ app/helpers/restaurants_helper.rb:3
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT AVG("reviews"."rating") FROM "reviews" WHERE "reviews"."restaurant_id" = ?[0m  [["restaurant_id", 9]]
+  ↳ app/helpers/restaurants_helper.rb:6
+  Rendered restaurants/index.html.erb within layouts/application (9.2ms)
+Completed 200 OK in 117ms (Views: 109.4ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2018-12-02 01:02:02 -0500
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/ruby/.rvm/gems/ruby-2.5.3/gems/activerecord-5.2.1/lib/active_record/log_subscriber.rb:98
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (0.8ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (51.2ms)
+Completed 200 OK in 450ms (Views: 433.9ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2018-12-02 01:02:10 -0500
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"I0s7o/beFNoqPazke8iB09/BFIiY+ReYnPlatBNWjlpfIFFtVrVQcU0B3RyH0LmugoX00hFMh5/3z8CTgQYa/w==", "user"=>{"email"=>"user@test.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (13.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "user@test.com"], ["LIMIT", 1]]
+  ↳ /home/ruby/.rvm/gems/ruby-2.5.3/gems/activerecord-5.2.1/lib/active_record/log_subscriber.rb:98
+Redirected to http://localhost:3000/
+Completed 302 Found in 242ms (ActiveRecord: 13.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-12-02 01:02:10 -0500
+Processing by RestaurantsController#index as HTML
+  Rendering restaurants/index.html.erb within layouts/application
+  [1m[36mRestaurant Load (1.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" ORDER BY created_at DESC[0m
+  ↳ app/views/restaurants/index.html.erb:1
+  Rendered restaurants/index.html.erb within layouts/application (70.0ms)
+Completed 500 Internal Server Error in 80ms (ActiveRecord: 1.7ms)
+
+
+  
+ActionView::Template::Error (undefined method `validates_pesence_of' for #<Class:0x00007fde94b19228>
+Did you mean?  validates_presence_of
+               validates_absence_of
+               validates_size_of):
+    3:         <div class="col-md-4", style="margin-bottom: 60px">
+    4:             <h2 style="text-align: center"><%= link_to restaurant.name, restaurant_path(restaurant) %></h2>
+    5:             <div style="width: 96px; margin: auto">
+    6:                 <span class="average-review-rating" data-score="<%= getAverageReview(restaurant) %>"></span>
+    7:             </div>
+    8:         </div>
+    9:     <% end %>
+  
+app/models/review.rb:5:in `<class:Review>'
+app/models/review.rb:1:in `<main>'
+app/helpers/restaurants_helper.rb:3:in `getAverageReview'
+app/views/restaurants/index.html.erb:6:in `block in _app_views_restaurants_index_html_erb___3638699881505815655_70297072497720'
+app/views/restaurants/index.html.erb:2:in `_app_views_restaurants_index_html_erb___3638699881505815655_70297072497720'
+Started GET "/" for 127.0.0.1 at 2018-12-02 01:02:28 -0500
+Processing by RestaurantsController#index as HTML
+  Rendering restaurants/index.html.erb within layouts/application
+  [1m[36mRestaurant Load (0.8ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" ORDER BY created_at DESC[0m
+  ↳ app/views/restaurants/index.html.erb:1
+  [1m[36mReview Load (0.3ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."restaurant_id" = ?[0m  [["restaurant_id", 12]]
+  ↳ app/helpers/restaurants_helper.rb:3
+  [1m[36mReview Load (0.1ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."restaurant_id" = ?[0m  [["restaurant_id", 11]]
+  ↳ app/helpers/restaurants_helper.rb:3
+  [1m[36mReview Load (0.1ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."restaurant_id" = ?[0m  [["restaurant_id", 10]]
+  ↳ app/helpers/restaurants_helper.rb:3
+  [1m[36mReview Load (0.0ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."restaurant_id" = ?[0m  [["restaurant_id", 9]]
+  ↳ app/helpers/restaurants_helper.rb:3
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT AVG("reviews"."rating") FROM "reviews" WHERE "reviews"."restaurant_id" = ?[0m  [["restaurant_id", 9]]
+  ↳ app/helpers/restaurants_helper.rb:6
+  Rendered restaurants/index.html.erb within layouts/application (81.5ms)
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:21
+Completed 200 OK in 331ms (Views: 310.9ms | ActiveRecord: 5.9ms)
+
+
+Started GET "/restaurants/10" for 127.0.0.1 at 2018-12-02 01:02:34 -0500
+Processing by RestaurantsController#show as HTML
+  Parameters: {"id"=>"10"}
+  [1m[36mRestaurant Load (2.0ms)[0m  [1m[34mSELECT  "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:58
+  [1m[36mReview Load (0.5ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."restaurant_id" = ?[0m  [["restaurant_id", 10]]
+  ↳ app/controllers/restaurants_controller.rb:15
+  Rendering restaurants/show.html.erb within layouts/application
+  [1m[36mUser Load (1.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/restaurants/show.html.erb:5
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "reviews" WHERE "reviews"."restaurant_id" = ?[0m  [["restaurant_id", 10]]
+  ↳ app/views/restaurants/show.html.erb:19
+  Rendered collection of templates [0 times] (0.0ms)
+  Rendered restaurants/show.html.erb within layouts/application (16.5ms)
+Completed 200 OK in 115ms (Views: 91.0ms | ActiveRecord: 4.9ms)
+
+
+Started GET "/restaurants/10/reviews/new" for 127.0.0.1 at 2018-12-02 01:02:37 -0500
+Processing by ReviewsController#new as HTML
+  Parameters: {"restaurant_id"=>"10"}
+  [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT  "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:44
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/ruby/.rvm/gems/ruby-2.5.3/gems/activerecord-5.2.1/lib/active_record/log_subscriber.rb:98
+  Rendering reviews/new.html.erb within layouts/application
+  Rendered reviews/_form.html.erb (12.4ms)
+  Rendered reviews/new.html.erb within layouts/application (13.4ms)
+Completed 200 OK in 120ms (Views: 107.6ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-12-02 01:02:40 -0500
+Processing by RestaurantsController#index as HTML
+  Rendering restaurants/index.html.erb within layouts/application
+  [1m[36mRestaurant Load (2.8ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" ORDER BY created_at DESC[0m
+  ↳ app/views/restaurants/index.html.erb:1
+  [1m[36mReview Load (0.1ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."restaurant_id" = ?[0m  [["restaurant_id", 12]]
+  ↳ app/helpers/restaurants_helper.rb:3
+  [1m[36mReview Load (0.2ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."restaurant_id" = ?[0m  [["restaurant_id", 11]]
+  ↳ app/helpers/restaurants_helper.rb:3
+  [1m[36mReview Load (0.1ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."restaurant_id" = ?[0m  [["restaurant_id", 10]]
+  ↳ app/helpers/restaurants_helper.rb:3
+  [1m[36mReview Load (0.1ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."restaurant_id" = ?[0m  [["restaurant_id", 9]]
+  ↳ app/helpers/restaurants_helper.rb:3
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT AVG("reviews"."rating") FROM "reviews" WHERE "reviews"."restaurant_id" = ?[0m  [["restaurant_id", 9]]
+  ↳ app/helpers/restaurants_helper.rb:6
+  Rendered restaurants/index.html.erb within layouts/application (14.5ms)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:21
+Completed 200 OK in 118ms (Views: 91.7ms | ActiveRecord: 3.5ms)
+
+
+Started GET "/restaurants/new" for 127.0.0.1 at 2018-12-02 01:02:41 -0500
+Processing by RestaurantsController#new as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/ruby/.rvm/gems/ruby-2.5.3/gems/activerecord-5.2.1/lib/active_record/log_subscriber.rb:98
+  Rendering restaurants/new.html.erb within layouts/application
+  Rendered restaurants/_form.html.erb (14.0ms)
+  Rendered restaurants/new.html.erb within layouts/application (15.9ms)
+Completed 200 OK in 103ms (Views: 97.4ms | ActiveRecord: 0.1ms)
+
+
+Started POST "/restaurants" for 127.0.0.1 at 2018-12-02 01:02:43 -0500
+Processing by RestaurantsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"uh225AMWVe52gv3lyB2JfAGdQ4aLEcam4aVa8jNhYsE2r7UbcJdqcJJVxOeRKyzuwkzVzAPy3BEJ4yJB6l6MLw==", "restaurant"=>{"name"=>"", "description"=>"", "contactInfo"=>"", "location"=>""}, "commit"=>"Create Restaurant"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:27
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:29
+  [1m[35m (1.5ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:29
+  Rendering restaurants/new.html.erb within layouts/application
+  Rendered restaurants/_form.html.erb (11.2ms)
+  Rendered restaurants/new.html.erb within layouts/application (14.5ms)
+Completed 200 OK in 109ms (Views: 95.5ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/restaurants/12" for 127.0.0.1 at 2018-12-02 01:02:59 -0500
+Processing by RestaurantsController#show as HTML
+  Parameters: {"id"=>"12"}
+  [1m[36mRestaurant Load (5.7ms)[0m  [1m[34mSELECT  "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:58
+  [1m[36mReview Load (0.3ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."restaurant_id" = ?[0m  [["restaurant_id", 12]]
+  ↳ app/controllers/restaurants_controller.rb:15
+  Rendering restaurants/show.html.erb within layouts/application
+  [1m[36mUser Load (6.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/restaurants/show.html.erb:5
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT COUNT(*) FROM "reviews" WHERE "reviews"."restaurant_id" = ?[0m  [["restaurant_id", 12]]
+  ↳ app/views/restaurants/show.html.erb:19
+  Rendered collection of templates [0 times] (0.0ms)
+  Rendered restaurants/show.html.erb within layouts/application (19.4ms)
+Completed 200 OK in 186ms (Views: 160.5ms | ActiveRecord: 13.3ms)
+
+
+Started GET "/restaurants/12/reviews/new" for 127.0.0.1 at 2018-12-02 01:03:02 -0500
+Processing by ReviewsController#new as HTML
+  Parameters: {"restaurant_id"=>"12"}
+  [1m[36mRestaurant Load (3.0ms)[0m  [1m[34mSELECT  "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:44
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/ruby/.rvm/gems/ruby-2.5.3/gems/activerecord-5.2.1/lib/active_record/log_subscriber.rb:98
+  Rendering reviews/new.html.erb within layouts/application
+  Rendered reviews/_form.html.erb (9.8ms)
+  Rendered reviews/new.html.erb within layouts/application (14.2ms)
+Completed 200 OK in 127ms (Views: 116.6ms | ActiveRecord: 3.2ms)
+
+
+Started POST "/restaurants/12/reviews" for 127.0.0.1 at 2018-12-02 01:03:04 -0500
+Processing by ReviewsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"qGBcREkQ/tajE4esF9EoJv40wxt3PmzDxz23aImL9fk9/L9FDCCgg2m8geXYjJOOrKcVcDxgzLVoFK4VDOYFNQ==", "review"=>{"rating"=>"", "comment"=>""}, "commit"=>"Create Review", "restaurant_id"=>"12"}
+  [1m[36mRestaurant Load (0.4ms)[0m  [1m[34mSELECT  "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:44
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:13
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/reviews_controller.rb:15
+  [1m[36mRestaurant Load (0.1ms)[0m  [1m[34mSELECT  "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:15
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:15
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/reviews_controller.rb:15
+  Rendering reviews/new.html.erb within layouts/application
+  Rendered reviews/_form.html.erb (10.9ms)
+  Rendered reviews/new.html.erb within layouts/application (12.9ms)
+Completed 200 OK in 118ms (Views: 97.8ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/restaurants/12/reviews/new" for 127.0.0.1 at 2018-12-02 01:30:58 -0500
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/ruby/.rvm/gems/ruby-2.5.3/gems/activerecord-5.2.1/lib/active_record/log_subscriber.rb:98
+Processing by ReviewsController#new as HTML
+  Parameters: {"restaurant_id"=>"12"}
+  [1m[36mRestaurant Load (0.4ms)[0m  [1m[34mSELECT  "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:44
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/ruby/.rvm/gems/ruby-2.5.3/gems/activerecord-5.2.1/lib/active_record/log_subscriber.rb:98
+  Rendering reviews/new.html.erb within layouts/application
+  Rendered reviews/_form.html.erb (68.8ms)
+  Rendered reviews/new.html.erb within layouts/application (71.6ms)
+Completed 200 OK in 751ms (Views: 648.2ms | ActiveRecord: 2.9ms)
+
+
+Started POST "/restaurants/12/reviews" for 127.0.0.1 at 2018-12-02 01:31:05 -0500
+Processing by ReviewsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"hTP4cEhtBEEpK8T9SWl5DuPcDzkuQYxVXbUcOG4G8gZZoDcfpwN+ebpnXz4Zr95HP4b506iPuoFxiyRMExJhjw==", "review"=>{"rating"=>"", "comment"=>""}, "commit"=>"Create Review", "restaurant_id"=>"12"}
+  [1m[36mRestaurant Load (5.3ms)[0m  [1m[34mSELECT  "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:44
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:13
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/reviews_controller.rb:15
+  [1m[36mRestaurant Load (0.1ms)[0m  [1m[34mSELECT  "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:15
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:15
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/reviews_controller.rb:15
+Redirected to http://localhost:3000/restaurants/12/reviews/new?comment=&rating=
+Completed 302 Found in 28ms (ActiveRecord: 5.9ms)
+
+
+Started GET "/restaurants/12/reviews/new?comment=&rating=" for 127.0.0.1 at 2018-12-02 01:31:06 -0500
+Processing by ReviewsController#new as HTML
+  Parameters: {"comment"=>"", "rating"=>"", "restaurant_id"=>"12"}
+  [1m[36mRestaurant Load (6.8ms)[0m  [1m[34mSELECT  "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:44
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/ruby/.rvm/gems/ruby-2.5.3/gems/activerecord-5.2.1/lib/active_record/log_subscriber.rb:98
+  Rendering reviews/new.html.erb within layouts/application
+  Rendered reviews/_form.html.erb (11.6ms)
+  Rendered reviews/new.html.erb within layouts/application (13.8ms)
+Completed 200 OK in 273ms (Views: 249.3ms | ActiveRecord: 7.7ms)
+
+
+Started POST "/restaurants/12/reviews" for 127.0.0.1 at 2018-12-02 01:31:17 -0500
+Processing by ReviewsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"ThnDNQKwgyRP5dxCr2rHk0DQR52cOQcZXYsLdI/BYiySigxa7d75HNypR4H/rGDanIqxdxr3Mc1xtTMA8tXxpQ==", "review"=>{"rating"=>"", "comment"=>"asdasdasdasd"}, "commit"=>"Create Review", "restaurant_id"=>"12"}
+  [1m[36mRestaurant Load (8.1ms)[0m  [1m[34mSELECT  "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:44
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:13
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/reviews_controller.rb:15
+  [1m[36mRestaurant Load (1.5ms)[0m  [1m[34mSELECT  "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:15
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:15
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/reviews_controller.rb:15
+Redirected to http://localhost:3000/restaurants/12/reviews/new?comment=asdasdasdasd&rating=
+Completed 302 Found in 39ms (ActiveRecord: 10.7ms)
+
+
+Started GET "/restaurants/12/reviews/new?comment=asdasdasdasd&rating=" for 127.0.0.1 at 2018-12-02 01:31:18 -0500
+Processing by ReviewsController#new as HTML
+  Parameters: {"comment"=>"asdasdasdasd", "rating"=>"", "restaurant_id"=>"12"}
+  [1m[36mRestaurant Load (4.8ms)[0m  [1m[34mSELECT  "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:44
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/ruby/.rvm/gems/ruby-2.5.3/gems/activerecord-5.2.1/lib/active_record/log_subscriber.rb:98
+  Rendering reviews/new.html.erb within layouts/application
+  Rendered reviews/_form.html.erb (9.1ms)
+  Rendered reviews/new.html.erb within layouts/application (10.4ms)
+Completed 200 OK in 124ms (Views: 107.1ms | ActiveRecord: 5.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-12-02 01:36:30 -0500
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/ruby/.rvm/gems/ruby-2.5.3/gems/activerecord-5.2.1/lib/active_record/log_subscriber.rb:98
+Processing by RestaurantsController#index as HTML
+  Rendering restaurants/index.html.erb within layouts/application
+  [1m[36mRestaurant Load (0.4ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" ORDER BY created_at DESC[0m
+  ↳ app/views/restaurants/index.html.erb:1
+  [1m[36mReview Load (0.4ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."restaurant_id" = ?[0m  [["restaurant_id", 12]]
+  ↳ app/helpers/restaurants_helper.rb:3
+  [1m[36mReview Load (0.1ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."restaurant_id" = ?[0m  [["restaurant_id", 11]]
+  ↳ app/helpers/restaurants_helper.rb:3
+  [1m[36mReview Load (0.1ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."restaurant_id" = ?[0m  [["restaurant_id", 10]]
+  ↳ app/helpers/restaurants_helper.rb:3
+  [1m[36mReview Load (0.1ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."restaurant_id" = ?[0m  [["restaurant_id", 9]]
+  ↳ app/helpers/restaurants_helper.rb:3
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT AVG("reviews"."rating") FROM "reviews" WHERE "reviews"."restaurant_id" = ?[0m  [["restaurant_id", 9]]
+  ↳ app/helpers/restaurants_helper.rb:6
+  Rendered restaurants/index.html.erb within layouts/application (131.0ms)
+Completed 200 OK in 671ms (Views: 651.2ms | ActiveRecord: 2.3ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2018-12-02 01:36:37 -0500
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (0.9ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (55.7ms)
+Completed 200 OK in 166ms (Views: 153.9ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2018-12-02 01:36:49 -0500
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Wkdxgie08LBS73oS/6eum541By8KBWTbIaJ5QcBD47wS/9ZoS17In09FzT3ScDojyoUdtsEnrWdedTM628DP1A==", "user"=>{"email"=>"user@test.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (10.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "user@test.com"], ["LIMIT", 1]]
+  ↳ /home/ruby/.rvm/gems/ruby-2.5.3/gems/activerecord-5.2.1/lib/active_record/log_subscriber.rb:98
+Redirected to http://localhost:3000/
+Completed 302 Found in 212ms (ActiveRecord: 10.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-12-02 01:36:49 -0500
+Processing by RestaurantsController#index as HTML
+  Rendering restaurants/index.html.erb within layouts/application
+  [1m[36mRestaurant Load (0.1ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" ORDER BY created_at DESC[0m
+  ↳ app/views/restaurants/index.html.erb:1
+  [1m[36mReview Load (0.1ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."restaurant_id" = ?[0m  [["restaurant_id", 12]]
+  ↳ app/helpers/restaurants_helper.rb:3
+  [1m[36mReview Load (0.1ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."restaurant_id" = ?[0m  [["restaurant_id", 11]]
+  ↳ app/helpers/restaurants_helper.rb:3
+  [1m[36mReview Load (0.1ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."restaurant_id" = ?[0m  [["restaurant_id", 10]]
+  ↳ app/helpers/restaurants_helper.rb:3
+  [1m[36mReview Load (0.1ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."restaurant_id" = ?[0m  [["restaurant_id", 9]]
+  ↳ app/helpers/restaurants_helper.rb:3
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT AVG("reviews"."rating") FROM "reviews" WHERE "reviews"."restaurant_id" = ?[0m  [["restaurant_id", 9]]
+  ↳ app/helpers/restaurants_helper.rb:6
+  Rendered restaurants/index.html.erb within layouts/application (8.6ms)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:21
+Completed 200 OK in 126ms (Views: 124.0ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/restaurants/12" for 127.0.0.1 at 2018-12-02 01:36:52 -0500
+Processing by RestaurantsController#show as HTML
+  Parameters: {"id"=>"12"}
+  [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT  "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:58
+  [1m[36mReview Load (0.1ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."restaurant_id" = ?[0m  [["restaurant_id", 12]]
+  ↳ app/controllers/restaurants_controller.rb:15
+  Rendering restaurants/show.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/restaurants/show.html.erb:5
+  [1m[35m (1.9ms)[0m  [1m[34mSELECT COUNT(*) FROM "reviews" WHERE "reviews"."restaurant_id" = ?[0m  [["restaurant_id", 12]]
+  ↳ app/views/restaurants/show.html.erb:19
+  Rendered collection of templates [0 times] (0.0ms)
+  Rendered restaurants/show.html.erb within layouts/application (14.3ms)
+Completed 200 OK in 91ms (Views: 85.3ms | ActiveRecord: 2.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-12-02 01:37:00 -0500
+Processing by RestaurantsController#index as HTML
+  Rendering restaurants/index.html.erb within layouts/application
+  [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" ORDER BY created_at DESC[0m
+  ↳ app/views/restaurants/index.html.erb:1
+  [1m[36mReview Load (0.1ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."restaurant_id" = ?[0m  [["restaurant_id", 12]]
+  ↳ app/helpers/restaurants_helper.rb:3
+  [1m[36mReview Load (0.1ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."restaurant_id" = ?[0m  [["restaurant_id", 11]]
+  ↳ app/helpers/restaurants_helper.rb:3
+  [1m[36mReview Load (0.1ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."restaurant_id" = ?[0m  [["restaurant_id", 10]]
+  ↳ app/helpers/restaurants_helper.rb:3
+  [1m[36mReview Load (0.3ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."restaurant_id" = ?[0m  [["restaurant_id", 9]]
+  ↳ app/helpers/restaurants_helper.rb:3
+  [1m[35m (2.3ms)[0m  [1m[34mSELECT AVG("reviews"."rating") FROM "reviews" WHERE "reviews"."restaurant_id" = ?[0m  [["restaurant_id", 9]]
+  ↳ app/helpers/restaurants_helper.rb:6
+  Rendered restaurants/index.html.erb within layouts/application (14.3ms)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:21
+Completed 200 OK in 99ms (Views: 94.8ms | ActiveRecord: 3.2ms)
+
+
+Started GET "/restaurants/new" for 127.0.0.1 at 2018-12-02 01:37:01 -0500
+Processing by RestaurantsController#new as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/ruby/.rvm/gems/ruby-2.5.3/gems/activerecord-5.2.1/lib/active_record/log_subscriber.rb:98
+  Rendering restaurants/new.html.erb within layouts/application
+  Rendered restaurants/_form.html.erb (11.5ms)
+  Rendered restaurants/new.html.erb within layouts/application (13.8ms)
+Completed 200 OK in 107ms (Views: 100.6ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-12-02 01:37:12 -0500
+Processing by RestaurantsController#index as HTML
+  Rendering restaurants/index.html.erb within layouts/application
+  [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" ORDER BY created_at DESC[0m
+  ↳ app/views/restaurants/index.html.erb:1
+  [1m[36mReview Load (0.1ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."restaurant_id" = ?[0m  [["restaurant_id", 12]]
+  ↳ app/helpers/restaurants_helper.rb:3
+  [1m[36mReview Load (0.1ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."restaurant_id" = ?[0m  [["restaurant_id", 11]]
+  ↳ app/helpers/restaurants_helper.rb:3
+  [1m[36mReview Load (0.1ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."restaurant_id" = ?[0m  [["restaurant_id", 10]]
+  ↳ app/helpers/restaurants_helper.rb:3
+  [1m[36mReview Load (0.2ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."restaurant_id" = ?[0m  [["restaurant_id", 9]]
+  ↳ app/helpers/restaurants_helper.rb:3
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT AVG("reviews"."rating") FROM "reviews" WHERE "reviews"."restaurant_id" = ?[0m  [["restaurant_id", 9]]
+  ↳ app/helpers/restaurants_helper.rb:6
+  Rendered restaurants/index.html.erb within layouts/application (11.8ms)
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:21
+Completed 200 OK in 115ms (Views: 112.3ms | ActiveRecord: 1.5ms)
+
+
