@@ -1,0 +1,68 @@
+<div style="padding-left: 15px">
+    <div class="row">
+        <h2><%= @restaurant.name %>
+            &nbsp;
+            <% if user_signed_in? %>
+                <% if @restaurant.user_id == current_user.id %>
+                    <%= link_to "Edit", edit_restaurant_path(@restaurant), class: "btn btn-warning" %>
+                    <%= link_to "Delete", restaurant_path(@restaurant), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger" %>
+                <% end %>
+            <% end %>
+        </h2>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4">
+            <h4>Average Rating
+                <span class="average-review-rating" data-score="<%= @average_review %>"></span>
+            </h4>
+            <p>Based on <%= @restaurant.reviews.count %> reviews</p>
+        </div>
+
+        <div class="col-md-8">
+            <p><%= @restaurant.description %></p>
+            <p><%= @restaurant.contactInfo %></p>
+            <p><%= @restaurant.location %></p>
+        </div>
+        
+    </div>
+
+    <div class="row">
+        <%= link_to "Back", root_path, class: "btn btn-primary" %>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-8", style="padding-left: 0">
+            <h4>Reviews
+                <% if user_signed_in? %>
+                    <%= link_to "Add Review", new_restaurant_review_path(@restaurant), class: "btn btn-default" %>
+                <% end %>
+            </h4>
+
+            <div style="padding-left: 30px">
+                <%= render @restaurant.reviews %>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $('.review-rating').raty({
+        readOnly:true,
+        score: function() {
+            return $(this).attr('data-score');
+        },
+        path: '/assets/'
+    });
+</script>
+
+<script>
+    $('.average-review-rating').raty({
+        readOnly:true,
+        score: function() {
+            return $(this).attr('data-score');
+        },
+        path: '/assets/'
+    });   
+</script>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>RestaurantReview</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+
+    <nav class="navbar navbar-default">
+      <div class="container">
+        <div class="navbar-header">
+          <%= link_to "Restaurant Review", root_path, class: "navbar-brand" %>
+        </div>
+
+        <ul class="nav navbar-nav">
+          <% if user_signed_in? %>
+            <li><%= link_to "Add Restaurant", new_restaurant_path %></li>
+          <% end %>
+        </ul>
+
+        <ul class="nav navbar-nav navbar-right">
+          <% if user_signed_in? %>
+            <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
+          <% else %>
+            <li><%= link_to "Sign Up", new_user_registration_path %></li>
+            <li><%= link_to "Log In", new_user_session_path %></li>
+          <% end %>
+        </ul>
+
+        <div style="width: 185px; margin: auto">
+          <%= form_tag(restaurants_path, :method => "get", id: "search-form") do %>
+            <%= text_field_tag :search, params[:search], placeholder: "Search Restaurants", style: "margin-top: 5%" %>
+          <% end %>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container">
+      <p class="notice"><%= notice %></p>
+
+      <%= yield %>
+    </div>
+  </body>
+</html>

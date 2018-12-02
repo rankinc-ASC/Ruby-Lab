@@ -1,0 +1,22 @@
+<% if @restaurants.present? %>
+    <% @restaurants.each do |restaurant| %>
+        <div class="col-md-4", style="margin-bottom: 60px">
+            <h2 style="text-align: center"><%= link_to restaurant.name, restaurant_path(restaurant) %></h2>
+            <div style="width: 96px; margin: auto">
+                <span class="average-review-rating" data-score="<%= getAverageReview(restaurant) %>"></span>
+            </div>
+        </div>
+    <% end %>
+<% else %>
+    <p>There are no restaurants with the name or location of <%= params[:search] %>.</p>
+<% end %>
+
+<script>
+    $('.average-review-rating').raty({
+        readOnly:true,
+        score: function() {
+            return $(this).attr('data-score');
+        },
+        path: '/assets/'
+    });   
+</script>
