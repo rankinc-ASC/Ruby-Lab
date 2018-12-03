@@ -2,6 +2,7 @@ class ReviewsController < ApplicationController
     before_action :find_restaurant
     before_action :find_review, only: [:edit, :update, :destroy]
     before_action :authenticate_user!, only: [:new, :edit]
+    before_action :check_user, only: [:edit, :update, :destroy]
 
     def new
         @review = Review.new
@@ -46,5 +47,14 @@ class ReviewsController < ApplicationController
 
         def find_review
             @review = Review.find(params[:id])
+        end
+
+        def check_user
+            find_restaurant
+            find_review
+            if @review.user_id != current_user.id
+                flash[:notice] = "You are not allowed to do that."
+                redirect_to restaurant_path(@restaurant)
+            end
         end
 end
